@@ -1,6 +1,16 @@
 import sketch from 'sketch'
-// documentation: https://developer.sketchapp.com/reference/api/
 
 export default function() {
-  sketch.UI.message("It's alive 🙌")
+  const doc = sketch.getSelectedDocument()
+  const colors = doc.swatches
+
+  const colorsNames = colors.map(color => {
+    return color.name
+  })
+
+  if (colors.length === 0) {
+    sketch.UI.alert('No Colors', 'There is no colors!')
+  } else {
+    sketch.UI.alert('Color Variables', `${colorsNames}`)
+  }
 }
