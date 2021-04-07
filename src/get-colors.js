@@ -6,9 +6,11 @@ export default function() {
 
   // Get color names from variables
   const colorsNames = colors.map(color => {
-    return color.name
+    return color.name.toLowerCase()
   })
 
+  console.log(colorsNames)
+  
   // If color variables exist, show an alert with the color names
   if (colors.length !== 0) {
     sketch.UI.alert('Color Variables', `${colorsNames}`)
