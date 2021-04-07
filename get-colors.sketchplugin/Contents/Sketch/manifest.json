@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/sketch-hq/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
+  "icon": "icon.png",
+  "commands": [
+    {
+      "name": "Get Colors",
+      "identifier": "get-colors.get-colors-identifier",
+      "script": "__get-colors.js",
+      "description": "Get color variables"
+    }
+  ],
+  "menu": {
+    "title": "Get Colors",
+    "items": [
+      "get-colors.get-colors-identifier"
+    ]
+  },
+  "version": "0.1.0",
+  "description": "",
+  "name": "get-colors",
+  "identifier": "get-colors",
+  "disableCocoaScriptPreprocessor": true,
+  "appcast": "https://raw.githubusercontent.com//master/.appcast.xml",
+  "author": "Cronos",
+  "authorEmail": "jorge.escamilla89@gmail.com"
+}
