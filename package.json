@@ -21,7 +21,8 @@
     "postinstall": "npm run build && skpm-link"
   },
   "devDependencies": {
-    "@skpm/builder": "^0.7.0"
+    "@skpm/builder": "^0.7.0",
+    "lodash": "^4.17.21"
   },
   "author": "Cronos <jorge.escamilla89@gmail.com>"
 }
