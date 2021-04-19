@@ -148,23 +148,22 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
   if (!colors.length) {
     sketch__WEBPACK_IMPORTED_MODULE_1___default.a.UI.alert('No Colors', 'There is no colors!');
-    return;
+  } else {
+    var formattedColors = colors.reduce(function (prev, color) {
+      return _objectSpread(_objectSpread({}, prev), {}, {
+        [color.name.toLowerCase()]: color.color
+      });
+    }, {});
+    var type = 'json';
+    var savePanel = NSSavePanel.savePanel();
+    savePanel.setNameFieldStringValue('colors.' + type);
+    savePanel.setPrompt('Save');
+    savePanel.runModal();
+    var file = NSString.stringWithString(JSON.stringify(formattedColors, null, 2));
+    var file_path = savePanel.URL().path();
+    file.writeToFile_atomically_encoding_error(file_path, true, NSUTF8StringEncoding, null);
+    sketch__WEBPACK_IMPORTED_MODULE_1___default.a.UI.alert('Colors exported', 'Colors exporte succesfully!');
   }
-
-  var formattedColors = colors.reduce(function (prev, color) {
-    return _objectSpread(_objectSpread({}, prev), {}, {
-      [color.name.replace('Colors/', '').toLowerCase()]: color.color
-    });
-  }, {});
-  var type = 'json';
-  var savePanel = NSSavePanel.savePanel();
-  savePanel.setNameFieldStringValue('colors.' + type);
-  savePanel.setPrompt('Save');
-  savePanel.runModal();
-  var file = NSString.stringWithString(JSON.stringify(formattedColors));
-  var file_path = savePanel.URL().path();
-  file.writeToFile_atomically_encoding_error(file_path, true, NSUTF8StringEncoding, null);
-  sketch__WEBPACK_IMPORTED_MODULE_1___default.a.UI.alert('Colors exported', 'Colors exporte succesfully!');
 });
 
 /***/ }),
