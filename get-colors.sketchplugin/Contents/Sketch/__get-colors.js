@@ -93,6 +93,33 @@ var exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/@babel/runtime/helpers/defineProperty.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/defineProperty.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+module.exports["default"] = module.exports, module.exports.__esModule = true;
+
+/***/ }),
+
 /***/ "./src/get-colors.js":
 /*!***************************!*\
   !*** ./src/get-colors.js ***!
@@ -102,24 +129,114 @@ var exports =
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
-/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sketch */ "sketch");
+/* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _lib_values__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/values */ "./src/lib/values.js");
+
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
-  var doc = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.getSelectedDocument();
-  var colors = doc.swatches; // Get color names from variables
+  var doc = sketch__WEBPACK_IMPORTED_MODULE_1___default.a.getSelectedDocument();
+  var colors = doc.swatches;
 
-  var colorsNames = colors.map(function (color) {
-    return color.name.toLowerCase();
-  });
-  console.log(colorsNames); // If color variables exist, show an alert with the color names
-
-  if (colors.length !== 0) {
-    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.alert('Color Variables', "".concat(colorsNames));
-  } else {
-    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.alert('No Colors', 'There is no colors!');
+  if (!colors.length) {
+    sketch__WEBPACK_IMPORTED_MODULE_1___default.a.UI.alert('No Colors', 'There is no colors!');
+    return;
   }
+
+  var formattedColors = colors.reduce(function (prev, color) {
+    return _objectSpread(_objectSpread({}, prev), {}, {
+      [color.name.replace('Colors/', '').toLowerCase()]: color.color
+    });
+  }, {});
+  var type = 'json';
+  var savePanel = NSSavePanel.savePanel();
+  savePanel.setNameFieldStringValue('colors.' + type);
+  savePanel.setPrompt('Save');
+  savePanel.runModal();
+  var file = NSString.stringWithString(JSON.stringify(formattedColors));
+  var file_path = savePanel.URL().path();
+  file.writeToFile_atomically_encoding_error(file_path, true, NSUTF8StringEncoding, null);
+  sketch__WEBPACK_IMPORTED_MODULE_1___default.a.UI.alert('Colors exported', 'Colors exporte succesfully!');
 });
+
+/***/ }),
+
+/***/ "./src/lib/values.js":
+/*!***************************!*\
+  !*** ./src/lib/values.js ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var values = {
+  'JavaScript Object': {
+    lineStart: '',
+    prefix: "   '",
+    diviner: "': '",
+    postfix: "',\n",
+    lineEnd: '}',
+    filetype: 'js'
+  },
+  'JavaScript Variables': {
+    lineStart: '',
+    prefix: 'const ',
+    diviner: " = '",
+    postfix: "';\n",
+    lineEnd: '',
+    filetype: 'js'
+  },
+  SCSS: {
+    lineStart: '',
+    prefix: '$',
+    diviner: ': ',
+    postfix: ';\n',
+    lineEnd: '',
+    filetype: 'scss'
+  },
+  Less: {
+    lineStart: '',
+    prefix: '@',
+    diviner: ': ',
+    postfix: ';\n',
+    lineEnd: '',
+    filetype: 'less'
+  },
+  CSS: {
+    lineStart: ':root {\n',
+    prefix: '   --',
+    diviner: ': ',
+    postfix: ';\n',
+    lineEnd: '}',
+    filetype: 'css'
+  },
+  JSON: {
+    lineStart: {},
+    prefix: '',
+    diviner: '',
+    postfix: '',
+    lineEnd: '',
+    filetype: 'json'
+  },
+  YAML: {
+    lineStart: {},
+    prefix: '',
+    diviner: '',
+    postfix: '',
+    lineEnd: '',
+    filetype: 'yml'
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (values);
 
 /***/ }),
 

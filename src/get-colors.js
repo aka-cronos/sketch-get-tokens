@@ -18,10 +18,10 @@ export default () => {
     {}
   )
 
-  let type = 'JSON'
+  let type = 'json'
   let savePanel = NSSavePanel.savePanel()
 
-  savePanel.setNameFieldStringValue('colors.' + values[type].filetype)
+  savePanel.setNameFieldStringValue('colors.' + type)
   savePanel.setPrompt('Save')
 
   savePanel.runModal()

@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@skpm/builder": "^0.7.0",
-    "lodash": "^4.17.21",
     "prettier": "2.2.1"
   },
   "author": "Cronos <jorge.escamilla89@gmail.com>"
