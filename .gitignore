@@ -1,5 +1,5 @@
 # build artifacts
-*.sketchplugin
+get-colors.sketchplugin
 
 # npm
 node_modules
