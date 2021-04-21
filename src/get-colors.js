@@ -1,5 +1,4 @@
 import sketch from 'sketch'
-import values from './lib/values'
 
 export default () => {
   const doc = sketch.getSelectedDocument()
