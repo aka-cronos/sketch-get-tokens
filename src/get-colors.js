@@ -15,20 +15,20 @@ export default () => {
       {}
     )
 
-    let type = 'json'
-    let savePanel = NSSavePanel.savePanel()
+    const type = 'json'
+    const savePanel = NSSavePanel.savePanel()
 
     savePanel.setNameFieldStringValue('colors.' + type)
     savePanel.setPrompt('Save')
 
     savePanel.runModal()
 
-    let file = NSString.stringWithString(
+    const file = NSString.stringWithString(
       JSON.stringify(formattedColors, null, 2)
     )
-    let file_path = savePanel.URL().path()
+    const filePath = savePanel.URL().path()
     file.writeToFile_atomically_encoding_error(
-      file_path,
+      filePath,
       true,
       NSUTF8StringEncoding,
       null
