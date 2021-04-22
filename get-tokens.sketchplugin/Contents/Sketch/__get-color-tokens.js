@@ -88,7 +88,7 @@ var exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/get-colors.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/get-color-tokens.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -120,10 +120,10 @@ module.exports["default"] = module.exports, module.exports.__esModule = true;
 
 /***/ }),
 
-/***/ "./src/get-colors.js":
-/*!***************************!*\
-  !*** ./src/get-colors.js ***!
-  \***************************/
+/***/ "./src/get-color-tokens.js":
+/*!*********************************!*\
+  !*** ./src/get-color-tokens.js ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -160,7 +160,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
     var file = NSString.stringWithString(JSON.stringify(formattedColors, null, 2));
     var filePath = savePanel.URL().path();
     file.writeToFile_atomically_encoding_error(filePath, true, NSUTF8StringEncoding, null);
-    sketch__WEBPACK_IMPORTED_MODULE_1___default.a.UI.alert('Colors exported', 'Colors exporte succesfully!');
+    sketch__WEBPACK_IMPORTED_MODULE_1___default.a.UI.alert('Colors exported', 'Colors exported succesfully!');
   }
 });
 
@@ -195,4 +195,4 @@ module.exports = require("sketch");
 }
 globalThis['onRun'] = __skpm_run.bind(this, 'default')
 
-//# sourceMappingURL=__get-colors.js.map
+//# sourceMappingURL=__get-color-tokens.js.map

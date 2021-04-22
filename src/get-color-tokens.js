@@ -34,6 +34,6 @@ export default () => {
       null
     )
 
-    sketch.UI.alert('Colors exported', 'Colors exporte succesfully!')
+    sketch.UI.alert('Colors exported', 'Colors exported succesfully!')
   }
 }

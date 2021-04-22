@@ -1,18 +1,24 @@
 {
+  "name": "Get Tokens",
+  "description": "Generate JSON tokens files from styles",
   "$schema": "https://raw.githubusercontent.com/sketch-hq/SketchAPI/develop/docs/sketch-plugin-manifest-schema.json",
   "icon": "icon.png",
   "commands": [
     {
       "name": "Get Colors",
-      "identifier": "get-colors.get-colors-identifier",
-      "script": "./get-colors.js",
+      "identifier": "getTokens.getColors",
+      "script": "./get-color-tokens.js",
       "description": "Get color variables"
+    },
+    {
+      "name": "Get Text",
+      "identifier": "getTokens.getText",
+      "script": "./get-text-tokens.js",
+      "description": "Get text styles"
     }
   ],
   "menu": {
-    "title": "Get Colors",
-    "items": [
-      "get-colors.get-colors-identifier"
-    ]
+    "title": "Get Tokens",
+    "items": ["getTokens.getColors", "-", "getTokens.getText"]
   }
 }

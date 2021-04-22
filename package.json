@@ -1,14 +1,14 @@
 {
-  "name": "get-colors",
+  "name": "get-tokens",
   "description": "",
   "version": "0.1.0",
   "engines": {
     "sketch": ">=49.0"
   },
   "skpm": {
-    "name": "get-colors",
+    "name": "get-tokens",
     "manifest": "src/manifest.json",
-    "main": "get-colors.sketchplugin",
+    "main": "get-tokens.sketchplugin",
     "assets": [
       "assets/**/*"
     ],
